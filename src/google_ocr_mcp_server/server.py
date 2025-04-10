@@ -1,13 +1,11 @@
 import json
-import os
 
 from google.cloud import vision
 from google.protobuf.json_format import MessageToDict
 from loguru import logger
 from mcp.server.fastmcp import FastMCP
 
-SAVE_RESULTS = True
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/zerohertz/Downloads/tmp.json"
+from .settings import configs
 
 mcp = FastMCP(
     name="google-ocr-mcp-server",
@@ -25,7 +23,7 @@ async def ocr(path: str) -> str:
     Perform Optical Character Recognition (OCR) on the provided image file.
 
     Args:
-        path (str): The file path to the image on which OCR will be performed.
+        path (str): The absolute file path to the image on which OCR will be performed.
 
     Returns:
         str: The extracted text from the image.
@@ -48,7 +46,7 @@ async def ocr(path: str) -> str:
             "{}\nFor more info on error messages, check: "
             "https://cloud.google.com/apis/design/errors".format(response.error.message)
         )
-    if SAVE_RESULTS:
+    if configs.SAVE_RESULTS:
         response_dict = MessageToDict(response._pb)
         _path = _without_ext(path)
         with open(_path + ".json", "w") as file:

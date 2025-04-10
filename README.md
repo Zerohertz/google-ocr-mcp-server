@@ -43,16 +43,17 @@ The server implements one tool:
 <details>
   <summary>Development/Unpublished Servers Configuration</summary>
 
-```
-"mcpServers": {
-  "google-ocr-mcp-server": {
-    "command": "uv",
-    "args": [
-      "--directory",
-      "/Users/zerohertz/Downloads/google-ocr-mcp-server",
-      "run",
-      "google-ocr-mcp-server"
-    ]
+```json
+{
+  "mcpServers": {
+    "google-ocr-mcp-server": {
+      "command": "uv",
+      "args": ["run", "google-ocr-mcp-server"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/path/to/google-application-credentials.json",
+        "SAVE_RESULTS": false
+      }
+    }
   }
 }
 ```
@@ -62,13 +63,17 @@ The server implements one tool:
 <details>
   <summary>Published Servers Configuration</summary>
 
-```
-"mcpServers": {
-  "google-ocr-mcp-server": {
-    "command": "uvx",
-    "args": [
-      "google-ocr-mcp-server"
-    ]
+```json
+{
+  "mcpServers": {
+    "google-ocr-mcp-server": {
+      "command": "uvx",
+      "args": ["google-ocr-mcp-server"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/path/to/google-application-credentials.json",
+        "SAVE_RESULTS": false
+      }
+    }
   }
 }
 ```
