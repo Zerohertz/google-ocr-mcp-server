@@ -127,7 +127,10 @@ experience, we strongly recommend using the [MCP Inspector](https://github.com/m
 You can launch the MCP Inspector via [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) with this command:
 
 ```bash
-npx @modelcontextprotocol/inspector uv --directory /Users/zerohertz/Downloads/google-ocr-mcp-server run google-ocr-mcp-server
+$ npx @modelcontextprotocol/inspector uv --directory /Users/zerohertz/Downloads/google-ocr-mcp-server run google-ocr-mcp-server
+Starting MCP inspector...
+⚙️ Proxy server listening on port 6277
+🔍 MCP Inspector is up and running at http://127.0.0.1:6274 🚀
 ```
 
 Upon launching, the Inspector will display a URL that you can access in your browser to begin debugging.
