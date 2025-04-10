@@ -1,5 +1,6 @@
 import json
-from typing import Optional
+from contextlib import asynccontextmanager
+from typing import AsyncIterator
 
 from google.cloud import vision
 from google.protobuf.json_format import MessageToDict
@@ -8,13 +9,24 @@ from mcp.server.fastmcp import FastMCP
 
 from .settings import configs
 
+
+@asynccontextmanager
+async def lifespan(server: FastMCP) -> AsyncIterator[dict[str, any]]:
+    try:
+        logger.info("Google OCR MCP server starting up")
+        yield {}
+    finally:
+        logger.info("Google OCR MCP server shut down")
+
+
 mcp = FastMCP(
     name="google-ocr-mcp-server",
     instructions="Google OCR on images",
+    lifespan=lifespan,
     lazy_load=True,
 )
 
-_client: Optional[vision.ImageAnnotatorClient] = None
+_client: vision.ImageAnnotatorClient | None = None
 
 
 def get_client() -> vision.ImageAnnotatorClient:
