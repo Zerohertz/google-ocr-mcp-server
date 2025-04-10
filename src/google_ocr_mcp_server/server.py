@@ -32,7 +32,9 @@ _client: vision.ImageAnnotatorClient | None = None
 def get_client() -> vision.ImageAnnotatorClient:
     global _client
     if _client is None:
+        logger.info("Initializing `ImageAnnotatorClient` ...")
         _client = vision.ImageAnnotatorClient()
+        logger.info("`ImageAnnotatorClient` successfully initialized.")
     return _client
 
 
