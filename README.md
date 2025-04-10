@@ -7,12 +7,14 @@ Google OCR
 ### Resources
 
 The server implements a simple note storage system with:
+
 - Custom note:// URI scheme for accessing individual notes
 - Each note resource has a name, description and text/plain mimetype
 
 ### Prompts
 
 The server provides a single prompt:
+
 - summarize-notes: Creates summaries of all stored notes
   - Optional "style" argument to control detail level (brief/detailed)
   - Generates prompt combining all current notes with style preference
@@ -20,6 +22,7 @@ The server provides a single prompt:
 ### Tools
 
 The server implements one tool:
+
 - add-note: Adds a new note to the server
   - Takes "name" and "content" as required string arguments
   - Updates server state and notifies clients of resource changes
@@ -34,38 +37,42 @@ The server implements one tool:
 
 #### Claude Desktop
 
-On MacOS: `~/Library/Application\ Support/Claude/claude_desktop_config.json`
-On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
+- On MacOS: `~/Library/Application\ Support/Claude/claude_desktop_config.json`
+- On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 
 <details>
   <summary>Development/Unpublished Servers Configuration</summary>
-  ```
-  "mcpServers": {
-    "google-ocr-mcp-server": {
-      "command": "uv",
-      "args": [
-        "--directory",
-        "/Users/zerohertz/Downloads/google-ocr-mcp-server",
-        "run",
-        "google-ocr-mcp-server"
-      ]
-    }
+
+```
+"mcpServers": {
+  "google-ocr-mcp-server": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      "/Users/zerohertz/Downloads/google-ocr-mcp-server",
+      "run",
+      "google-ocr-mcp-server"
+    ]
   }
-  ```
+}
+```
+
 </details>
 
 <details>
   <summary>Published Servers Configuration</summary>
-  ```
-  "mcpServers": {
-    "google-ocr-mcp-server": {
-      "command": "uvx",
-      "args": [
-        "google-ocr-mcp-server"
-      ]
-    }
+
+```
+"mcpServers": {
+  "google-ocr-mcp-server": {
+    "command": "uvx",
+    "args": [
+      "google-ocr-mcp-server"
+    ]
   }
-  ```
+}
+```
+
 </details>
 
 ## Development
@@ -75,11 +82,13 @@ On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 To prepare the package for distribution:
 
 1. Sync dependencies and update lockfile:
+
 ```bash
 uv sync
 ```
 
 2. Build package distributions:
+
 ```bash
 uv build
 ```
@@ -87,11 +96,13 @@ uv build
 This will create source and wheel distributions in the `dist/` directory.
 
 3. Publish to PyPI:
+
 ```bash
 uv publish
 ```
 
 Note: You'll need to set PyPI credentials via environment variables or command flags:
+
 - Token: `--token` or `UV_PUBLISH_TOKEN`
 - Or username/password: `--username`/`UV_PUBLISH_USERNAME` and `--password`/`UV_PUBLISH_PASSWORD`
 
@@ -100,12 +111,10 @@ Note: You'll need to set PyPI credentials via environment variables or command f
 Since MCP servers run over stdio, debugging can be challenging. For the best debugging
 experience, we strongly recommend using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector).
 
-
 You can launch the MCP Inspector via [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) with this command:
 
 ```bash
 npx @modelcontextprotocol/inspector uv --directory /Users/zerohertz/Downloads/google-ocr-mcp-server run google-ocr-mcp-server
 ```
-
 
 Upon launching, the Inspector will display a URL that you can access in your browser to begin debugging.
