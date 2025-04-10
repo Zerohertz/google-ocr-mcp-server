@@ -1,8 +1,6 @@
-# google-ocr-mcp-server MCP server
+# Google OCR MCP server
 
 [![smithery badge](https://smithery.ai/badge/@Zerohertz/google-ocr-mcp-server)](https://smithery.ai/server/@Zerohertz/google-ocr-mcp-server)
-
-Google OCR
 
 ## Components
 
