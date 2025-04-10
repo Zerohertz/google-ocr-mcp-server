@@ -1,4 +1,5 @@
 import json
+from typing import Optional
 
 from google.cloud import vision
 from google.protobuf.json_format import MessageToDict
@@ -10,7 +11,17 @@ from .settings import configs
 mcp = FastMCP(
     name="google-ocr-mcp-server",
     instructions="Google OCR on images",
+    lazy_load=True,
 )
+
+_client: Optional[vision.ImageAnnotatorClient] = None
+
+
+def get_client() -> vision.ImageAnnotatorClient:
+    global _client
+    if _client is None:
+        _client = vision.ImageAnnotatorClient()
+    return _client
 
 
 def _without_ext(path: str) -> str:
@@ -36,7 +47,7 @@ async def ocr(path: str) -> str:
         - If SAVE_RESULTS is enabled, the OCR results will be saved as a JSON file
           in the same directory as the input image, with the same name but a .json extension.
     """
-    client = vision.ImageAnnotatorClient()
+    client = get_client()
     with open(path, "rb") as image_file:
         content = image_file.read()
     image = vision.Image(content=content)
