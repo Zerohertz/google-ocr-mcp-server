@@ -5,7 +5,6 @@ startCommand:
   configSchema:
     # JSON Schema defining the configuration options for the MCP.
     type: object
-    default: {}
     description: This is a server implementation for performing Optical Character Recognition (OCR) using the Google Cloud Vision API. It is built on top of the FastMCP framework, which allows for the creation of modular and extensible command processing tools.
     required:
       - googleApplicationCredentials
