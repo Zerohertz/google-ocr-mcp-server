@@ -1,5 +1,7 @@
 # google-ocr-mcp-server MCP server
 
+[![smithery badge](https://smithery.ai/badge/@Zerohertz/google-ocr-mcp-server)](https://smithery.ai/server/@Zerohertz/google-ocr-mcp-server)
+
 Google OCR
 
 ## Components
@@ -74,6 +76,14 @@ The server implements one tool:
 ```
 
 </details>
+
+### Installing via Smithery
+
+To install google-ocr-mcp-server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@Zerohertz/google-ocr-mcp-server):
+
+```bash
+npx -y @smithery/cli install @Zerohertz/google-ocr-mcp-server --client claude
+```
 
 ## Development
 
