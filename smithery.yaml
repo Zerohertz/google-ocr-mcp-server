@@ -20,8 +20,8 @@ startCommand:
     # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
     |-
     (config) => ({
-      command: 'uvx',
-      args: ['google-ocr-mcp-server'],
+      command: 'uv',
+      args: ['run', 'google-ocr-mcp-server'],
       env: {
         GOOGLE_APPLICATION_CREDENTIALS: config.googleApplicationCredentials,
         SAVE_RESULTS: config.saveResults
