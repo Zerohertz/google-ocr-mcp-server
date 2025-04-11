@@ -9,7 +9,7 @@ ifneq ($(shell echo $(tag) | grep -E '^v'),$(tag))
 	$(error tag must start with 'v')
 endif
 	echo $(tag)
-	sed -i '' 's|^\(version = \).*|\1"$(shell echo $(tag) | sed 's/^v//')"|g' pyproject.toml
+	sed -i '' 's|^\(version = \).*|\1"$(tag)"|g' pyproject.toml
 	uv sync
 	git add pyproject.toml
 	git add uv.lock
