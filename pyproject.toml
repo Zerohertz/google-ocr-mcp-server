@@ -1,6 +1,6 @@
 [project]
 name = "google-ocr-mcp-server"
-version = "v0.1.0"
+version = "v0.1.1"
 description = "Google OCR MCP server"
 readme = "README.md"
 requires-python = ">=3.12"
