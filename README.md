@@ -1,6 +1,25 @@
-# Google OCR MCP server
+<h2 align = "center">
+    📸 Google OCR MCP server
+</h2>
 
-[![smithery badge](https://smithery.ai/badge/@Zerohertz/google-ocr-mcp-server)](https://smithery.ai/server/@Zerohertz/google-ocr-mcp-server)
+<p align="center">
+    </br>
+    <a href="https://github.com/Zerohertz/google-ocr-mcp-server">
+        <img src="https://img.shields.io/badge/GitHub-181717?&logo=GitHub&logoColor=white" />
+    </a>
+    <a href="https://smithery.ai/server/@Zerohertz/google-ocr-mcp-server">
+        <img src="https://smithery.ai/badge/@Zerohertz/google-ocr-mcp-server" />
+    </a>
+    <a href="https://pypi.org/project/google-ocr-mcp-server/">
+        <img src="https://img.shields.io/pypi/v/google-ocr-mcp-server?&logo=PyPI&logoColor=FFFFFF&labelColor=3775A9&color=007EC6" />
+    </a>
+    <a href="https://github.com/Zerohertz/google-ocr-mcp-server/blob/master/LICENSE">
+        <img src="https://img.shields.io/pypi/l/google-ocr-mcp-server" />
+    </a>
+    <a href="https://pypi.org/project/google-ocr-mcp-server/">
+        <img src="https://img.shields.io/pypi/wheel/google-ocr-mcp-server" />
+    </a>
+</p>
 
 ## Components
 
