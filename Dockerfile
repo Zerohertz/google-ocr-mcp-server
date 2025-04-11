@@ -6,15 +6,21 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Install build dependencies
-RUN apk add --no-cache gcc musl-dev libffi-dev
+# copy requirements: using pyproject.toml and hatchling build system
+COPY pyproject.toml .
+COPY LICENSE .
+COPY README.md .
 
 # Copy the project files
-COPY . .
+COPY src ./src
+COPY uv.lock .
 
 # Upgrade pip and install the project package
 RUN pip install --upgrade pip && \
     pip install . --no-cache-dir
 
-# The server runs via its entrypoint defined in the pyproject.toml
+EXPOSE 8080
+
+# run the MCP server
+# The entry point is defined in pyproject.toml as google-ocr-mcp-server
 CMD ["google-ocr-mcp-server"]

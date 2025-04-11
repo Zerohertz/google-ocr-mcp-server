@@ -1,5 +1,5 @@
 <h2 align = "center">
-    📸 Google OCR MCP server
+    📸 Google OCR MCP server 📸
 </h2>
 
 <p align="center">
