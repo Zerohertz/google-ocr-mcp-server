@@ -6,6 +6,7 @@ from google.cloud import vision
 from google.protobuf.json_format import MessageToDict
 from loguru import logger
 from mcp.server.fastmcp import FastMCP
+from pydantic_settings import SettingsConfigDict
 
 from .settings import configs
 
@@ -22,8 +23,22 @@ async def lifespan(server: FastMCP) -> AsyncIterator[dict[str, any]]:
 mcp = FastMCP(
     name="google-ocr-mcp-server",
     instructions="Google OCR on images",
+    model_config=SettingsConfigDict(
+        env_prefix="FASTMCP_",
+        env_file=".env",
+        extra="ignore",
+    ),
+    debug=False,
+    log_level="INFO",
+    host="0.0.0.0",
+    port=8000,
+    sse_path="/sse",
+    message_path="/messages/",
+    warn_on_duplicate_resources=True,
+    warn_on_duplicate_tools=True,
+    warn_on_duplicate_prompts=True,
+    dependencies=["GOOGLE_APPLICATION_CREDENTIALS"],
     lifespan=lifespan,
-    lazy_load=True,
 )
 
 _client: vision.ImageAnnotatorClient | None = None
